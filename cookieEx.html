@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쿠키 예제</title>
+    <script>
+        // 쿠키 설정 함수
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
+
+
+        // 쿠키 읽기 함수
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                while (cookie.charAt(0) == ' ') cookie = cookie.substring(1, cookie.length);
+                if (cookie.indexOf(nameEQ) == 0) return cookie.substring(nameEQ.length, cookie.length);
+            }
+            return null;
+        }
+
+        // 페이지 로드 시 실행되는 함수
+        function onPageLoad() {
+            // 쿠키에서 사용자 이름 읽기
+            var username = getCookie("username");
+
+            // 사용자 이름이 있다면 환영 메시지 표시
+            if (username) {
+                document.getElementById("welcomeMessage").innerHTML = "안녕하세요, " + username + "님!";
+            }
+        }
+
+        // 사용자 이름 저장 및 환영 메시지 업데이트 함수
+        function saveUsername() {
+            var username = prompt("이름을 입력하세요:");
+            if (username) {
+                setCookie("username", username, 7);
+                document.getElementById("welcomeMessage").innerHTML = "안녕하세요, " + username + "님!";
+            }
+        }
+    </script>
+</head>
+<body onload="onPageLoad()">
+    <h1 id="welcomeMessage">환영합니다!</h1>
+    <button onclick="saveUsername()">이름 저장</button>
+</body>
+</html>

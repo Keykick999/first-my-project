@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    function setCookie(name, value, day){
+      var date = new Date();
+      date.setDate(date.getDate() + day);
+
+      var myCookie = '';
+      myCookie += name + '=' + value + ';';
+      myCookie += 'Expires=' + date.toUTCString();
+      
+      document.cookie = myCookie;
+
+      alert(document.cookie);
+    };
+
+    setCookie('abcMart','Main',8);
+
+  </script>
+
+</head>
+<body>
+  
+
+  
+</body>
+</html>

@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href = "" id = "link" class = "image-link" data-link = "https://www.naver.com/"><img src = "c:\Users\brian\OneDrive\바탕 화면\운동 사이트\776864.png" id = "image"></a>
+  <a href = "" id = "link" class = "image-link" data-link = "https://www.youtube.com/"><img src = "c:\Users\brian\OneDrive\바탕 화면\d.jpeg" id = "image"></a>
+  <a href = "" id = "link" class = "image-link" data-link = "https://www.msn.com/ko-kr/news/other/%EB%B3%91%EC%9B%90-%EC%9B%90%EB%AC%B4%EA%B3%BC%EC%97%90%EC%84%9C-%EC%9D%BC%ED%95%98%EB%8B%A4-%EC%8B%AC%EC%8B%AC%ED%95%B4%EC%84%9C-%EC%98%AC%EB%A6%B0-%EC%82%AC%EC%A7%84%EC%9D%B4-%EB%8C%80%EB%B0%95-%EB%82%98-%EB%8D%B0%EB%B7%94%ED%95%9C-%EC%97%B0%EC%98%88%EC%9D%B8/ar-AA1mQzm5?ocid=msedgntp&pc=SMTS&cvid=2b3019139e9f4266896752254df27b15&ei=8"><img src = "c:\Users\brian\OneDrive\사진\스크린샷(161).png" id = "image"></a>
+  <a href = "" id = "link" class = "image-link" data-link = "https://www.daum.net/"><img src = "c:\Users\brian\OneDrive\사진\스크린샷(162).png" id = "image"></a>
+  <script>
+    var imageLinks = document.querySelectorAll('.image-link');
+
+    imageLinks.forEach(function(link) {
+    link.addEventListener("click", function (event) {
+    event.preventDefault(); // 기본 동작(링크 이동)을 막음
+    var targetLink = link.getAttribute('data-link');
+    window.location.href = targetLink; // 클릭된 이미지에 연결된 링크로 이동
+  });
+});
+  </script>
+</body>
+</html>

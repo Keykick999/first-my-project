@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id = "myButton">삭제</button>
+  <button id = "create">생성</button>
+
+  <script>
+    var date = new Date();
+    var setCookie = '';
+
+    function createCookie(){
+      date.setDate(date.getDate() + 7);
+
+      setCookie += 'name=value;';
+      setCookie += 'Expires=' + date.toUTCString();
+
+      document.cookie = setCookie;
+    }
+
+    function deleteCookie(name){
+      date.setDate(date.getDate() + -1);
+      
+      setCookie += name + '=value;';
+      setCookie += 'Expires=' + date.toUTCString();
+
+      document.cookie = setCookie;
+
+    }
+
+    var delButton = document.getElementById('myButton');
+    var createButton = document.getElementById('create');
+
+    delButton.addEventListener("click", function(){
+      deleteCookie('name');
+      alert("쿠키 삭제 완료!!");
+    });
+
+    createButton.addEventListener("click", function(){
+      createCookie();
+      alert("쿠키 생성 완료!!");
+    });
+  </script>
+</body>
+</html>

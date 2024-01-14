@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 쿠키 설정 함수
+    function setCookie(name, value, days) {
+      var expires = "";
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+    // 쿠키 설정 예제
+    setCookie("username", 'john_doe', 7);
+
+    // 특정 이름의 쿠키 값을 가져오는 함수
+    function getCookie(name) {
+      var nameEQ = name + "=";
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        while(cookie.charAt(0) == '') cookie = cookie.substring(1, cookie.length);
+        if (cookie.indexOf(nameEQ) == 0) return cookie.substring(nameEQ.length, cookie.length);
+      }
+      return null;
+    }
+
+    // 쿠키 읽기 예제
+    var username = getCookie("username");
+    if (username) {
+      console.log("Username: " + username);
+    } else {
+      console.log("쿠키가 없습니다.");
+    }
+  </script>
+</body>
+</html>
